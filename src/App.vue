@@ -18,6 +18,9 @@ export default {
   },
   methods: {
     setupPorts: function (ports) {
+      ports.watchCounter.subscribe(function (counter) {
+        console.log(counter)
+      })
       this.ports = ports
     }
   }

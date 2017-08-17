@@ -35,16 +35,19 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Increment ->
-            ( model + 1, Cmd.none )
+            ( model + 1, watchCounter (toString msg) )
 
         Decrement ->
-            ( model - 1, Cmd.none )
+            ( model - 1, watchCounter (toString msg) )
 
         Multiply val ->
-            ( model * val, Cmd.none )
+            ( model * val, watchCounter (toString msg) )
 
 
 port counter : (Int -> msg) -> Sub msg
+
+
+port watchCounter : String -> Cmd msg
 
 
 subscriptions : Model -> Sub Msg
