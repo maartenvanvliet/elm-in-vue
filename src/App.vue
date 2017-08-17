@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <Counter reference='counter'></Counter>
+    <Counter reference='counter' :ports="setupPorts"></Counter>
+
+    <button @click="ports.counter.send(10)">Multiply by 10</button>
   </div>
 </template>
 
@@ -13,6 +15,11 @@ export default {
   name: 'app',
   components: {
     'Counter': ElmComponent(require('./Counter.elm').Main)
+  },
+  methods: {
+    setupPorts: function (ports) {
+      this.ports = ports
+    }
   }
 }
 </script>
