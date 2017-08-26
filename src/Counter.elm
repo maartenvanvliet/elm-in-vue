@@ -4,8 +4,13 @@ import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
 
 
+type alias Flags =
+    { initialCount : Int
+    }
+
+
 main =
-    Html.program { init = init, view = view, update = update, subscriptions = subscriptions }
+    Html.programWithFlags { init = init, view = view, update = update, subscriptions = subscriptions }
 
 
 
@@ -16,9 +21,9 @@ type alias Model =
     Int
 
 
-init : ( Model, Cmd Msg )
-init =
-    ( 0, Cmd.none )
+init : Flags -> ( Model, Cmd Msg )
+init flags =
+    ( flags.initialCount, Cmd.none )
 
 
 
