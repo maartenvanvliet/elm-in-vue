@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <Counter reference='counter' :ports="setupPorts" :flags="{initialCount: 10}"></Counter>
+    <Counter :ports="setupPorts" :flags="{initialCount: 10}"></Counter>
 
     <button @click="ports.counter.send(10)">Multiply by 10</button>
   </div>
